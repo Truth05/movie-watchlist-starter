@@ -7,8 +7,8 @@ export default function MovieList() {
   // Abort the request in the cleanup function.
   // TASK 4b: later, move all of that into your useFetch hook.
   const [movies, setMovies] = useState([]);
-const [loading, setLoading] = useState(true);
-const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
   const controller = new AbortController();

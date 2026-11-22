@@ -62,24 +62,28 @@ Each movie item has a unique ID. By using the ID as the key we reduce the risk o
 **3.1 (Explain)** Why is the fetch inside useEffect and not written directly in the component body?
 
 My answer:
+So that we are managing side effects correctly. The request is only made once, and not on each re-render.
 
 
 
 **3.2 (Predict)** What is the difference between useEffect(fn), useEffect(fn, []) and useEffect(fn, [url])?
 
 My answer:
+useEffect(fn) will run on every render. useEffect(fn, []) will run once when the component mounts. useEffect(fn, [url]) will run once when the component mounts, and again when the url changes.
 
 
 
 **3.3 (Explain)** fetch does not fail on a 404. What can go wrong if you forget to check res.ok?
 
 My answer:
+If we don’t check res.ok then failed responses could be considered valid data. This could cause unexpected issues in the app, and mean that movies aren’t displayed properly.
 
 
 
 **3.4 (Explain)** What does the cleanup function (controller.abort()) do and why do we ignore AbortError?
 
 My answer:
+The cleanup function cancels any ongoing requests. We can ignore AbortError as we have cancelled the request deliberately. It is not an error in our application.
 
 
 
