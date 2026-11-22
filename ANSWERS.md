@@ -23,27 +23,30 @@ Only the second card changes. Each card has individual state and changing the fa
 **1.3 (Fix)** A friend wrote onClick={setFavourite(true)} and gets "Too many re-renders". What is wrong and how do you fix it?
 
 My answer:
-The error is caused because the function setFavourite(true) is being run straight away, meaning it is continuously causing re-renders. To fix this we can put the setFavourite within an arrow function. This way it will only run once the button is clicked.
+The error is caused because the function setFavourite(true) is being run straight away, meaning it is continuously causing re-renders "loop". To fix this we can put the setFavourite within an arrow function. This way it will only run once the button is clicked.
 
-
+code: onClick={() => setFavourite(true)}
 
 ## Task 2
 
 **2.1 (Explain)** What does it mean for an input to be controlled? Describe what happens from one key press to the new text appearing in the box.
 
 My answer:
+An input is controlled because it is tied to the state within React. When entering text into the input, the state will update (onChange) causing React to re-render the component.
 
 
 
 **2.2 (Explain)** Why is watchlist.push(item) followed by setWatchlist(watchlist) a bug?
 
 My answer:
+This is a problem because .push() mutates the array in place. The array reference has not changed meaning React may not recognise a change. To fix this, we should create a new array, using the spread operator.
 
 
 
 **2.3 (Explain)** The heading shows how many movies are still to watch. Why does that number not need its own useState?
 
 My answer:
+Since we can calculate the number of unwatched movies by filtering the watchlist, and taking the length, it is not necessary to have a separate state for this variable. Having a separate state for this would be inefficient, and may cause data inconsistency.
 
 
 
@@ -51,6 +54,7 @@ My answer:
 
 My answer:
 
+Each movie item has a unique ID. By using the ID as the key we reduce the risk of React referencing the incorrect data in the case where items are added/removed. If we used the array index as the key, we run the risk of React referencing the wrong item in a changing list.
 
 
 ## Task 3
