@@ -92,24 +92,30 @@ The cleanup function cancels any ongoing requests. We can ignore AbortError as w
 **4.1 (Explain)** What is a custom hook? What makes it different from an ordinary function?
 
 My answer:
+A custom hook is a function starting with ‘use’. It can include other React hooks (such as useState and useEffect), however it also means that the component follows React hook rules. State logic can be reused across components.
+
 
 
 
 **4.2 (Explain)** Why does useLocalStorage use useState(() => ...) with an arrow function instead of a plain value?
 
 My answer:
-
+The arrow function means that React will only get data out of local storage during initialisation. This means data is not unnecessarily fetched from local storage on every re-render.
 
 
 **4.3 (Predict)** Two components both call useFetch("/movies.json"). Do they share the same data? Explain.
 
 My answer:
 
+No. Each component will have its own state and effect. Even though they are fetching data from the same URL, each component will have its own state.
+
 
 
 **4.4 (Explain)** Why is JSON.parse wrapped in try and catch?
 
 My answer:
+
+If the data stored is not valid JSON, an error will be thrown when trying to parse it. However, wrapping it within a try/catch block means that we can handle the error, and allow the application to start with the initial value, rather than causing an error.
 
 
 

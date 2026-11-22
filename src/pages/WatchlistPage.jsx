@@ -1,10 +1,13 @@
-import { useState } from "react";
+import useLocalStorage from "../hooks/useLocalStorage.js";
 import WatchForm from "../components/WatchForm.jsx";
 import WatchList from "../components/WatchList.jsx";
 
 export default function WatchlistPage() {
   // TASK 2: the watchlist live HERE, in the parent, not inside WatchForm or WatchList.
-  const [watchlist, setWatchlist] = useState([]);
+  const [watchlist, setWatchlist] = useLocalStorage(
+  "watchlist.items",
+  []
+);
   // Replace the next line with useState, then fill in the three functions.
 
   function addItem(text) {
