@@ -1,25 +1,40 @@
+import { useState } from "react";
 import WatchForm from "../components/WatchForm.jsx";
 import WatchList from "../components/WatchList.jsx";
 
 export default function WatchlistPage() {
   // TASK 2: the watchlist live HERE, in the parent, not inside WatchForm or WatchList.
+  const [watchlist, setWatchlist] = useState([]);
   // Replace the next line with useState, then fill in the three functions.
-  const watchlist = [];
 
   function addItem(text) {
+    const newItem = {
+      id: crypto.randomUUID(),
+      text: text,
+      watched: false
+    };
     // TODO: add { id: crypto.randomUUID(), text, watched: false } WITHOUT mutating the array
+    setWatchlist([...watchlist, newItem]);
   }
 
   function toggleItem(id) {
+    setWatchlist(
+    watchlist.map((i) =>
+    i.id === id
+      ? { ...i, watched: !i.watched }
+      : i
+  )
+);
     // TODO: flip watched for the item with this id (use map and a copy)
   }
 
   function deleteItem(id) {
+    setWatchlist(watchlist.filter((i) => i.id !== id));
     // TODO: remove the item with this id (use filter)
   }
 
   // TASK 2: derived data. Compute it from watchlist. Do NOT store it in state.
-  const toWatch = 0;
+  const toWatch = watchlist.filter((i) => !i.watched).length;
 
   return (
     <section className="panel">

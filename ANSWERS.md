@@ -10,17 +10,20 @@ Answer each question in your own words, two or three sentences. Do not paste an 
 
 My answer:
 
+Because it isn’t a state variable. Using useState allows us to store the favourite data as part of Reacts state. When the value is updated React will re-render the component.
 
 
 **1.2 (Predict)** There are three cards and you click Add favourite on the second one. Which cards change, and why?
 
 My answer:
 
+Only the second card changes. Each card has individual state and changing the favourite state in the second card has no effect on the first and third card.
 
 
 **1.3 (Fix)** A friend wrote onClick={setFavourite(true)} and gets "Too many re-renders". What is wrong and how do you fix it?
 
 My answer:
+The error is caused because the function setFavourite(true) is being run straight away, meaning it is continuously causing re-renders. To fix this we can put the setFavourite within an arrow function. This way it will only run once the button is clicked.
 
 
 
