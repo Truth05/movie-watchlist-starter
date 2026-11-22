@@ -1,6 +1,6 @@
 # My answers: Movie Watchlist workshop
 
-Name: 
+Name: Kushan Thathsara 80000982
 
 Answer each question in your own words, two or three sentences. Do not paste an AI answer. You may be asked to explain these in a viva.
 
